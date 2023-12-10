@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags  %}
+
+{% block content %}
+<h1>{{ page.subtitle }}</h1>
+
+{% if page.main_carousel %}
+{% include 'components/main_carousel.html' %}
+{% endif %}
+
+{% endblock %}
