@@ -26,6 +26,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "search",
     "pages",
+    "menus",
+    "hanger",
 
 
 
@@ -76,6 +78,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "menus.context_processor.get_nav_tab"
             ],
         },
     },

@@ -2,14 +2,45 @@
 <div class="container-fluid bg-primary">
     <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-0">
-            <a href="/" class="navbar-brand">
+            <a href="/en/" class="navbar-brand">
                 <h1 class="text-white fw-bold d-block">Heart<span class="text-secondary">Symphony</span> </h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
-                <div class="navbar-nav ms-auto mx-xl-auto p-0">
+                <div class="navbar-nav ms-auto mx-xl-auto p-0">                
+                    
+                    {% if tabs %}
+
+                    {% for tab in tabs %}
+
+                    {% if tab.page_list.count < 2 %}
+
+                    {% with page=tab.page_list.first.page_link %}
+                                    
+                    <a href="{{page.url}}" class="nav-item nav-link">{{tab.nav_title}}</a>
+
+                    {% endwith %}
+
+                    {% else %}
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{tab.nav_title}}</a>
+                        <div class="dropdown-menu rounded">
+                            {% for page in tab.page_list.all %}
+                            <a href="{{page.page_link.url}}" class="dropdown-item">{{page.page_link.title}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+
+<!-- 
                     <a href="index.html" class="nav-item nav-link active text-secondary">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
@@ -24,9 +55,11 @@
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
+                     -->
                 </div>
             </div>
         </nav>
     </div>
 </div>
 <!-- Navbar End -->
+{{request.path}}
