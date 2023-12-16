@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class HangerConfig(AppConfig):
+class StreamsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'hanger'
+    name = 'streams'

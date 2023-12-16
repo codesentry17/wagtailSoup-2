@@ -15,21 +15,21 @@
 
                     {% for tab in tabs %}
 
-                    {% if tab.page_list.count < 2 %}
+                    {% if not tab.is_dropdown %}
 
                     {% with page=tab.page_list.first.page_link %}
                                     
-                    <a href="{{page.url}}" class="nav-item nav-link">{{tab.nav_title}}</a>
+                    <a href="{{page.url}}" class="nav-item nav-link {% if request.path == page.url %}active{% endif %} ">{{page.title}}</a>
 
                     {% endwith %}
 
                     {% else %}
 
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{tab.nav_title}}</a>
+                        <a href="#" class="nav-link dropdown-toggle {% if request.path in tab.routes %}active{% endif %}" data-bs-toggle="dropdown">{{tab.nav_title}}</a>
                         <div class="dropdown-menu rounded">
                             {% for page in tab.page_list.all %}
-                            <a href="{{page.page_link.url}}" class="dropdown-item">{{page.page_link.title}}</a>
+                            <a href="{{page.page_link.url}}" class="dropdown-item {% if request.path == page.page_link.url %}active{% endif %}">{{page.page_link.title}}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -62,4 +62,3 @@
     </div>
 </div>
 <!-- Navbar End -->
-{{request.path}}

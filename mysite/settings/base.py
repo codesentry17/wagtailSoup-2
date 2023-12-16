@@ -27,8 +27,7 @@ INSTALLED_APPS = [
     "search",
     "pages",
     "menus",
-    "hanger",
-
+    "streams",
 
 
     "wagtail.contrib.forms",

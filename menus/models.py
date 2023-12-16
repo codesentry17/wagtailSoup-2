@@ -39,6 +39,15 @@ class NavTab(ClusterableModel):
         InlinePanel('page_list', label='Your Page/s')
     ]
 
+    @property
+    def is_dropdown(self):
+        return self.page_list.count() > 1
+
+    @property
+    def routes(self):
+        return {x.page_link.url for x in self.page_list.all() }
+        
+
     def save(self, **kwargs):
         if not self.nav_title:
             self.nav_title = self.page_list.first().page_link.title
