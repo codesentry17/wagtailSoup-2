@@ -3,7 +3,26 @@
 {% load wagtailcore_tags  %}
 
 {% block content %}
+{% for component in page.components %}
 
-{% include 'components/main_carousel.html' %}
+{% if component.block.name == 'banner_carousel' %}
+
+{% include 'components/main_carousel.html' with block=component.value %}
+
+{% elif component.block.name == 'about_us' %}
+
+{% include 'components/info-1.html' with block=component.value %}
+
+{% elif component.block.name == 'page_intro' %}
+
+{% include 'components/page_intro.html' with block=component.value %}
+
+{% endif %}
+
+
+
+
+{% endfor %}
+
 
 {% endblock %}

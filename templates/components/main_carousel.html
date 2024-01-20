@@ -8,41 +8,17 @@
             <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
         </ol> -->
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img src="{% static 'img/carousel-1.jpg' %}" class="img-fluid" alt="First slide">
+            {% for slide in block.slides %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                {% image slide.slide_image max-1600x1200 class="img-fluid" %}
                 <div class="carousel-caption">
                     <div class="container carousel-content">
                         <h6 class="text-secondary h4 animated fadeInUp">{{page.title}}</h6>
-                        <h1 class="text-white display-1 mb-4 animated fadeInRight">An Innovative IT Solutions Agency</h1>
-                        <p class="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies tincidunt.</p>
-                        <a href="" class="me-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a>
-                        <a href="" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Contact Us</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carousel-2.jpg' %}" class="img-fluid" alt="Second slide">
-                <div class="carousel-caption">
-                    <div class="container carousel-content">
-                        <h6 class="text-secondary h4 animated fadeInUp">Best IT Solutions</h6>
-                        <h1 class="text-white display-1 mb-4 animated fadeInLeft">Quality Digital Services You Really Need!</h1>
-                        <p class="mb-4 text-white fs-5 animated fadeInDown">Lorem ipsum dolor sit amet elit. Sed efficitur quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies tincidunt.</p>
+                        <h1 class="text-white display-1 mb-4 animated fadeInRight">{{slide.slide_header}}</h1>
+                        <p class="mb-4 text-white fs-5 animated fadeInDown">{{slide.slide_subheader}}</p>
                         <!-- <a href="" class="me-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a> -->
-                        <a href="" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Contact Us</button></a>
-                    </div>
-                </div>
-            </div>
-            {% for block in page.carousel %}
-            <div class="carousel-item ">
-                <img src="{% static 'img/background.jpg' %}" class="img-fluid" alt="">
-                <div class="carousel-caption">
-                    <div class="container carousel-content">
-                        <h6 class="text-secondary h4 animated fadeInUp">{{page.title}}</h6>
-                        <h1 class="text-white display-1 mb-4 animated fadeInRight">{{block.value.banner_header}}</h1>
-                        <p class="mb-4 text-white fs-5 animated fadeInDown">{{block.value.banner_subheader}}</p>
-                        <!-- <a href="" class="me-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Read More</button></a> -->
-                        {% if block.value.page_redirect %}
-                        <a href="{{block.value.page_redirect.url}}" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">{{block.value.page_redirect.title}}</button></a>
+                        {% if slide.page_redirect %}
+                        <a href="{{slide.page_redirect.url}}" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">{{slide.page_redirect.title}}</button></a>
                         {% endif %}
                     </div>
                 </div>
@@ -60,8 +36,3 @@
     </div>
 </div>
 <!-- Carousel End -->
-
-{% for block in page.carousel %}
-{{block.banner_image.url}}
-hello
-{% endfor %}
