@@ -25,12 +25,14 @@ class HomePage(Page):
 
 
 class Wiggle(Page):
-    """practise the page models"""
+
+    """supreme app for making pages"""
 
     components = StreamField([
         ('banner_carousel', bk.BannerCarousel()),
         ('about_us', bk.AboutUs()),
-        ('page_intro', blocks.BooleanBlock(default=False)),
+        ('page_intro', blocks.BooleanBlock(default=True)),
+        ('blog_section',bk.BlogSection())
         ], use_json_field=True,
     )
 
@@ -38,76 +40,37 @@ class Wiggle(Page):
         FieldPanel("components")
     ]
 
-
-
-    # # old one >>>    
-
-    # carousel = StreamField(
-    #     [('carousel',bk.Carousel())],
-    #     use_json_field=True,
-    # )
-
-    # content_panels = Page.content_panels + [
-    #     MultiFieldPanel(
-    #         [
-    #             FieldPanel('carousel')
-    #         ],
-    #         heading = "Carousel",
-    #     )
-    # ]
+    subpage_types = ['Blog']
 
 
 
 
+class Blog(Page):
+    """This is going to create blog pages"""
 
-
-
-
-class BlogPage(Page):
-
-    # Database fields
-
-    body = RichTextField()
-    date = models.DateField("Post date")
-    feed_image = models.ForeignKey(
+    card_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
-        blank=True,
+        blank=False,
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    card_description = models.CharField(max_length=50, blank=True)
 
 
-    # Search index configuration
-
-    search_fields = Page.search_fields + [
-        index.SearchField('body'),
-        index.FilterField('date'),
-    ]
 
 
-    # Editor panels configuration
+
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
-        FieldPanel('body'),
-        InlinePanel('related_links', heading="Related links", label="Related link"),
+        MultiFieldPanel(
+            [
+                FieldPanel('card_image'),
+                FieldPanel('card_description')
+            ],
+            heading="Blog Card Glimpse"
+        ),
+
     ]
 
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('feed_image'),
-    ]
 
-
-
-
-class BlogPageRelatedLink(Orderable):
-    page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='related_links')
-    name = models.CharField(max_length=255)
-    url = models.URLField()
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('url'),
-    ]

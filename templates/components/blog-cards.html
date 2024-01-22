@@ -1,0 +1,41 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- Services Start -->
+<div class="container-fluid service py-5">
+    <div class="container py-5">
+        <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="sub-style">
+                <h4 class="sub-title px-3 mb-0">{{block.pre_header}}</h4>
+            </div>
+            <h1 class="display-3 mb-4">{{block.header}}</h1>
+            <p class="mb-0">{{block.sub_header}}</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+
+            <!-- for loop for looping through child blog page -->
+
+            {% for card in page.get_children.specific %}
+            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded">
+                    <div class="service-img rounded-top">
+                        <!-- <img src="{{card.card_image.url}}" class="img-fluid rounded-top w-100" alt=""> -->
+                        {% image card.card_image fill-1000x800 class="img-fluid rounded-top w-100" alt="card.card_image.title" %}
+                    </div>
+                    <div class="service-content rounded-bottom bg-light p-4">
+                        <div class="service-content-inner">
+                            <h5 class="mb-4">{{card.title}}</h5>
+                            <p class="mb-4">{{card.card_description}}</p>
+                            <a href="{{card.url}}" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Services More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services End -->

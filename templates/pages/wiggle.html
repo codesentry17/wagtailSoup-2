@@ -3,6 +3,10 @@
 {% load wagtailcore_tags  %}
 
 {% block content %}
+
+
+
+
 {% for component in page.components %}
 
 {% if component.block.name == 'banner_carousel' %}
@@ -17,12 +21,17 @@
 
 {% include 'components/page_intro.html' with block=component.value %}
 
+{% elif component.block.name == 'blog_section' %}
+
+{% include 'components/blog-cards.html' with block=component.value %}
+
 {% endif %}
 
 
 
-
 {% endfor %}
+
+
 
 
 {% endblock %}

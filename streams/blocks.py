@@ -3,7 +3,6 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import PageChooserBlock
 
 
-"""MAIN BANNER"""
 class BannerCarouselSlide(blocks.StructBlock):
     slide_header = blocks.CharBlock()
     slide_subheader = blocks.CharBlock()
@@ -15,7 +14,8 @@ class BannerCarouselSlide(blocks.StructBlock):
     
 
 class BannerCarousel(blocks.StructBlock):
-    purpose = blocks.CharBlock(default = "Main Page Banner")
+    """MAIN BANNER"""
+    purpose = blocks.CharBlock(default = "Main Page Banner", help_text="This field describes what this component does. Best left untouched")
     slides = blocks.ListBlock(BannerCarouselSlide())
 
 
@@ -25,9 +25,9 @@ class BannerCarousel(blocks.StructBlock):
 
 
 
-"""About Us"""
 class AboutUs(blocks.StructBlock):
-    purpose = blocks.CharBlock(default = "About Us")
+    """About Us"""
+    purpose = blocks.CharBlock(default = "About Us", help_text="This field describes what this component does. Best left untouched")
 
     img1 = ImageChooserBlock()
     img2 = ImageChooserBlock(required=False)
@@ -39,6 +39,19 @@ class AboutUs(blocks.StructBlock):
 
 
 
+
+
+
+
+
+
+class BlogSection(blocks.StructBlock):
+    """This is for the blog Section"""
+    
+    purpose = blocks.CharBlock(default = "Section for Blog cards")
+    pre_header = blocks.CharBlock(max_length=20)
+    header = blocks.CharBlock(max_length=50)
+    sub_header = blocks.CharBlock()
 
 
 

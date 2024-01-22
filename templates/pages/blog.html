@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% include 'components/page_intro.html' %}
+
+{% image page.card_image max-1600x1200 height="300" width="400" %}
+
+<p>{{page.card_description}}</p>
+
+{% endblock %}
