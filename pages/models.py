@@ -21,7 +21,7 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("subtitle")]
 
-
+    subpage_types = ['Wiggle']
 
 
 class Wiggle(Page):
@@ -41,6 +41,19 @@ class Wiggle(Page):
     ]
 
     subpage_types = ['Blog']
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        chosen_components = [field.block.name for field in self.components]
+
+        if 'blog_section' in chosen_components:
+            context['child_blogs'] = self.get_children().type(Blog)
+
+        return context
+    
+
+
 
 
 

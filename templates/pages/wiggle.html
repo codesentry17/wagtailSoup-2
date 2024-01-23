@@ -19,7 +19,7 @@
 
 {% elif component.block.name == 'page_intro' %}
 
-{% include 'components/page_intro.html' with block=component.value %}
+{% include 'components/page_intro.html' %}
 
 {% elif component.block.name == 'blog_section' %}
 
@@ -30,8 +30,6 @@
 
 
 {% endfor %}
-
-
 
 
 {% endblock %}
