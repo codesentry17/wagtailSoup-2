@@ -25,16 +25,20 @@
                         <div class="service-content-inner">
                             <h5 class="mb-4">{{blog.title}}</h5>
                             <p class="mb-4">{{blog.card_description}}</p>
+                            <a href="{{blog.full_url}}#disqus_thread"># COMMENTS</a>
                         </div>
-                    </div>
+                        </div>
+                    </div>  
                 </div>
-            </div>
             {% endfor %}
 
-            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Services More</a>
-            </div>
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                    <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">More Blog</a>
+                </div>
         </div>
     </div>
 </div>
+
+
+
 <!-- Services End -->
