@@ -21,12 +21,13 @@
                         <!-- <img src="{{card.card_image.url}}" class="img-fluid rounded-top w-100" alt=""> -->
                         {% image blog.card_image fill-1000x800 class="img-fluid rounded-top w-100" alt="blog.card_image.title" %}
                     </div>
-                    <div class="service-content rounded-bottom bg-light p-4" onclick="location.href='{{blog.url}}';" style="cursor: pointer;">
+                    <div class="service-content rounded-bottom bg-light p-4" onclick="location.href='{{blog.url}}';" style="cursor: pointer; height: 250px;">
                         <div class="service-content-inner">
                             <h5 class="mb-4">{{blog.title}}</h5>
                             <p class="mb-4">{{blog.card_description}}</p>
-                            <a href="{{blog.full_url}}#disqus_thread"># COMMENTS</a>
-                            {{blog.full_url}}
+                            <div style="">
+                                <i class="fa fa-comments text-primary"></i><span class="disqus-comment-count" data-disqus-identifier="{{blog.slug}}"></span>
+                            </div>
                         </div>
                         </div>
                     </div>  

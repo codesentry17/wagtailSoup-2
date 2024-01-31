@@ -2,7 +2,13 @@
 
 {% load wagtailcore_tags  %}
 
-<div class="container-fluid bg-primary">
+<div class="container-fluid bg-primary" style="
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    ">
     <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-0">
             <a href="{% pageurl page %}" class="navbar-brand">
