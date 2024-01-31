@@ -15,10 +15,12 @@ class BannerCarouselSlide(blocks.StructBlock):
 
 class BannerCarousel(blocks.StructBlock):
     """MAIN BANNER"""
-    purpose = blocks.CharBlock(default = "Main Page Banner", help_text="This field describes what this component does. Best left untouched")
     slides = blocks.ListBlock(BannerCarouselSlide())
 
+    class Meta:
+        label_format = "Carousel Component"
 
+    
 
 
     
@@ -27,7 +29,6 @@ class BannerCarousel(blocks.StructBlock):
 
 class AboutUs(blocks.StructBlock):
     """About Us"""
-    purpose = blocks.CharBlock(default = "About Us", help_text="This field describes what this component does. Best left untouched")
 
     img1 = ImageChooserBlock()
     img2 = ImageChooserBlock(required=False)
@@ -36,6 +37,9 @@ class AboutUs(blocks.StructBlock):
     main_header = blocks.CharBlock()
     body = blocks.TextBlock()
     page_redirect = PageChooserBlock(required=False)
+
+    class Meta:
+        label_format = "About Us Component"
 
 
 

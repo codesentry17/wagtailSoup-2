@@ -1,9 +1,12 @@
 <!-- Navbar Start -->
+
+{% load wagtailcore_tags  %}
+
 <div class="container-fluid bg-primary">
     <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-0">
             <a href="/" class="navbar-brand">
-                <h1 class="text-white fw-bold d-block">Heart<span class="text-secondary">Symphony</span> </h1>
+                <h1 class="text-white fw-bold d-block">{{WebName1}}<span class="text-secondary">{{WebName2}}</span> </h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -37,6 +40,15 @@
 
                     {% endif %}
                     {% endfor %}
+
+                    {% if page %}
+                    {% for translation in page.get_translations.live %}
+                        <a href="{% pageurl translation %}" rel="alternate" hreflang="{{ translation.locale.language_code }}" class="nav-item nav-link">
+                        {{ translation.locale.language_name_local }}
+                        </a>
+                    {% endfor %}
+                    {% endif %}
+
                     {% endif %}
 
 

@@ -34,6 +34,7 @@ class Wiggle(Page):
         ('page_intro', blocks.BooleanBlock(default=True)),
         ('blog_section',bk.BlogSection())
         ], use_json_field=True,
+        collapsed=True
     )
 
     content_panels = Page.content_panels + [

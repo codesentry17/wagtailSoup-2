@@ -8,9 +8,9 @@
         <h1 class="display-2 text-white mb-4 animated slideInDown">{{page.title}}</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
-                {% if page.get_parent.get_parent.title == 'Home' %}
+                <!-- {% if page.get_parent.get_parent.title == 'Home' %}
                 <li class="breadcrumb-item"><a href="/">{{page.get_parent.get_parent}}</a></li>
-                {% endif %}
+                {% endif %} -->
                 <li class="breadcrumb-item"><a href="{{page.get_parent.url}}">{{page.get_parent}}</a></li>
                 <li class="breadcrumb-item" aria-current="page">{{page.title}}</li>
             </ol>

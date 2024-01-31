@@ -1,13 +1,50 @@
-from .models import NavTab
+from .models import NavTab, Navbar
+from parler.utils.context import switch_language
+
 
 def get_nav_tab(request):
-    if NavTab.objects.exists():
-        tabs = NavTab.objects.all()
-        return {
-            'tabs':tabs
-        }
+    current_language = request.LANGUAGE_CODE
     
-    return {'tabs':None}
+    if current_language == 'en':
+        if Navbar.objects.exists():
+            navbar = Navbar.objects.first()
+            return {
+                'WebName1':navbar.name1,
+                'WebName2':navbar.name2,
+                'tabs':navbar.nav_tab.all()    
+            }
+        else:
+            return {
+                'WebName1':"Navbar",
+                'WebName2':"Deleted",
+                'tabs':None
+            }
+        
+    elif current_language == 'mr':
+        if Navbar.objects.exists():
+            navbar = Navbar.objects.get(id=2)
+            return {
+                'WebName1':navbar.name1,
+                'WebName2':navbar.name2,
+                'tabs':navbar.nav_tab.all()    
+            }
+        else:
+            return {
+                'WebName1':"Navbar",
+                'WebName2':"Deleted",
+                'tabs':None
+            }
+
+
+
+    # name = Navbar.objects.first()
+    # if NavTab.objects.exists():
+    #     tabs = NavTab.objects.all()
+    #     return {
+    #         'WebName1':name.name1,
+    #         'WebName2':name.name2,
+    #         'tabs':tabs
+    #     }
 
 
 

@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     "menus",
     "streams",
 
+    "wagtail_localize",
+    "wagtail_localize.locales",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
+    'wagtail.contrib.styleguide',
     "modelcluster",
     "taggit",
     "django.contrib.admin",
@@ -58,7 +61,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
+    "django.middleware.security.SecurityMiddleware",        
+    'django.middleware.locale.LocaleMiddleware',
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
@@ -133,6 +137,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+WAGTAIL_I18N_ENABLED = True
+
+# my_project/settings.py
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ('en', "English"),
+    ('mr', "Marathi")
+]
 
 
 # Static files (CSS, JavaScript, Images)
