@@ -1,0 +1,131 @@
+{% load static %} 
+
+<div id="adCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for ad in ads %}
+        <div class="carousel-item {% if ad.id == adId %}active{% endif %}">     
+            <div class="card">
+                <!-- clinic image -->
+                <img
+                    class="d-block w-100"
+                    src="{{ad.image.url}}"
+                    alt="First slide"
+                />
+                <div class="card-body" style="background-color:floralwhite;">
+                    <!-- Clinic Name -->
+                    <h4 class="card-title">{{ad.title}}</h4>
+                    <!-- Clinic Address -->
+                    <p class="" style="font-size: small">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ad.address}}
+                    </p>
+        
+                    <!-- Opening and Closing Times -->
+                    <p class="card-text" style="font-size: small">
+                        <i class="far fa-clock"></i>
+                        Opening Time: {{ad.opening_time}}<br />
+                        Closing Time: {{ad.closing_time}}<br />
+                        {{ad.days_open}}
+                    </p>
+        
+                    <!-- Google Maps Link -->
+                    <a
+                        href="{{ad.google_maps_link}}"
+                        target="_blank"
+                        class="btn btn-primary"
+                    >
+                        Map
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="carousel-item active">     
+            <div class="card">
+                <!-- clinic image -->
+                <img
+                    class="d-block w-100"
+                    src="{% static '\img\project-2.jpg' %}"
+                    alt="First slide"
+                />
+                <div class="card-body" style="background-color:floralwhite;">
+                    <!-- Clinic Name -->
+                    <h4 class="card-title">Ad Title</h4>
+                    <!-- Clinic Address -->
+                    <p class="" style="font-size: small">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ad address
+                    </p>
+        
+                    <!-- Opening and Closing Times -->
+                    <p class="card-text" style="font-size: small">
+                        <i class="far fa-clock"></i>
+                        Opening Time: 9:30<br />
+                        Closing Time: 10:30<br />
+                        asdasdasd
+                    </p>
+        
+                    <!-- Google Maps Link -->
+                    <a
+                        href="{{ad.google_maps_link}}"
+                        target="_blank"
+                        class="btn btn-primary">
+                        Map
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">     
+            <div class="card">
+                <!-- clinic image -->
+                <img
+                    class="d-block w-100"
+                    src="{% static '\img\project-2.jpg' %}"
+                    alt="First slide"
+                />
+                <div class="card-body" style="background-color:floralwhite;">
+                    <!-- Clinic Name -->
+                    <h4 class="card-title">Ad Title</h4>
+                    <!-- Clinic Address -->
+                    <p class="" style="font-size: small">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ad address
+                    </p>
+        
+                    <!-- Opening and Closing Times -->
+                    <p class="card-text" style="font-size: small">
+                        <i class="far fa-clock"></i>
+                        Opening Time: 9:30<br />
+                        Closing Time: 10:30<br />
+                        asdasdasd
+                    </p>
+        
+                    <!-- Google Maps Link -->
+                    <a
+                        href="{{ad.google_maps_link}}"
+                        target="_blank"
+                        class="btn btn-primary">
+                        Map
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a
+        class="carousel-control-prev"
+        href="#adCarousel"
+        role="button"
+        data-slide="prev"
+    >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a
+        class="carousel-control-next"
+        href="#adCarousel"
+        role="button"
+        data-slide="next"
+    >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+<a class="btn btn-primary btn-block position-sticky" href="#" role="button" style="top: 530px;">Post Ad</a>

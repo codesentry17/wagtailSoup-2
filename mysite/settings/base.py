@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "pages",
     "menus",
     "streams",
+    "advert",
 
     "wagtail_localize",
     "wagtail_localize.locales",

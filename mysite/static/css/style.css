@@ -759,3 +759,16 @@
     margin-right: -50px;
     border: 1px solid var(--bs-primary) ;
 }
+
+
+
+
+/* for navbar purposes custom */
+body {
+    padding-top: 60px;
+}
+@media (max-width: 979px) {
+    body {
+      padding-top: 0px;
+    }
+}
