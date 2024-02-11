@@ -7,7 +7,6 @@ class BannerCarouselSlide(blocks.StructBlock):
     slide_header = blocks.CharBlock()
     slide_subheader = blocks.CharBlock()
     slide_image = ImageChooserBlock()
-    page_redirect = PageChooserBlock(required=False)
 
     def __str__(self):
         return self.slide_header
@@ -18,6 +17,7 @@ class BannerCarousel(blocks.StructBlock):
     slides = blocks.ListBlock(BannerCarouselSlide())
 
     class Meta:
+        help_text = "COMPONENT FOR RENDERING CAROUSEL"
         label_format = "Carousel Component"
 
     
@@ -39,6 +39,7 @@ class AboutUs(blocks.StructBlock):
     page_redirect = PageChooserBlock(required=False)
 
     class Meta:
+        help_text = "COMPONENT TO RENDER ABOUT US"
         label_format = "About Us Component"
 
 
@@ -52,10 +53,11 @@ class AboutUs(blocks.StructBlock):
 class BlogSection(blocks.StructBlock):
     """This is for the blog Section"""
     
-    purpose = blocks.CharBlock(default = "Section for Blog cards")
     pre_header = blocks.CharBlock(max_length=20)
     header = blocks.CharBlock(max_length=50)
     sub_header = blocks.CharBlock()
 
-
+    class Meta:
+        help_text = "COMPONENT TO RENDER BLOG CARDS (ONLY IF CHILD PAGE EXISTS)"
+        label_format = "Blog Section Component"
 

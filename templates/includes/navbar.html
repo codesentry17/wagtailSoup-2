@@ -47,13 +47,6 @@
                     {% endif %}
                     {% endfor %}
 
-                    {% if page %}
-                    {% for translation in page.get_translations.live %}
-                        <a href="{% pageurl translation %}" rel="alternate" hreflang="{{ translation.locale.language_code }}" class="nav-item nav-link">
-                        {{ translation.locale.language_name_local }}
-                        </a>
-                    {% endfor %}
-                    {% endif %}
 
                     {% endif %}
 
@@ -75,6 +68,13 @@
                 -->
                 </div>
             </div>
+            {% if page %}
+            {% for translation in page.get_translations.live %}
+            <a href="{% pageurl translation %}" rel="alternate" hreflang="{{ translation.locale.language_code }}" class="navbar-brand">
+                <h1 class="text-white fw-bold d-block">{{ translation.locale.language_name_local }}</h1>
+            </a>
+            {% endfor %}
+            {% endif %}
         </nav>
     </div>
 </div>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags crispy_forms_tags %}
+
+{% block content %}
+
+<!-- Contact Start -->
+<div class="container-fluid py-5 mt-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+            <h1 class="mb-3 text-primary">{{page.header}}</h1>
+            <p class="mb-2">{{page.sub_header}}</p>
+        </div>
+        <div class="contact-detail position-relative p-5">
+            {% if page.extra_info %}
+            <div class="row g-5 mb-5 justify-content-center">
+                {% for block in page.extra_info %}
+                <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".3s">
+                    <div class="d-flex bg-light p-3 rounded">
+                        <div class="ms-3">
+                            <h4 class="text-primary">{{block.value.label}}</h4>
+                            <div class="h5">{{block.value.description}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeIn" style="margin-left: auto; margin-right: auto;" data-wow-delay=".5s">
+                    <form class="p-5 rounded contact-form" action="/post-your-ad/" method="POST">
+                        {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                        <div class="mb-4">
+                            {{ field.errors }}
+                            <h4 class="text-primary">
+                                {{ field.label_tag }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+                            </h4>
+                            <input type="{{ field.field.widget.input_type }}" class="form-control border-0 py-3"
+                                name="{{ field.name }}" id="{{ field.id_for_label }}"
+                                {% if field.field.required %}required="required"{% endif %}>
+                        </div>      
+                        {{field.}}                  
+                        {% endfor %}
+                        <div class="text-start">
+                            <button class="btn bg-primary text-white py-3 px-5" type="submit">Send Message | संदेश पाठवा</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<!-- Contact End -->
+
+{% for field in form.visible_fields %}
+{{field.field.required}}
+{% endfor %}
+
+
+
+{% endblock %}

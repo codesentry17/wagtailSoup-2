@@ -767,8 +767,50 @@
 body {
     padding-top: 60px;
 }
-@media (max-width: 979px) {
+@media (max-width: 450px) {
     body {
-      padding-top: 0px;
+      padding-top: 100px;
     }
+}
+
+
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    max-width: 100%;
+    height: auto;
+  }
+
+
+.float-left {
+float: left !important;
+}
+
+.float-right {
+float: right !important;
+}
+
+.p-3 {
+    padding: 1rem !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.mr-4,
+.mx-4 {
+  margin-right: 1.5rem !important;
+}
+
+.mb-3,
+.my-3 {
+  margin-bottom: 1rem !important;
+}
+
+
+.mb-5,
+.my-5 {
+  margin-bottom: 3rem !important;
 }
