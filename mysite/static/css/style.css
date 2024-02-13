@@ -665,6 +665,14 @@
     background: #26d48c;
 }
 
+form label{
+    display: block;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: var(--bs-primary);
+}
+
 /*** Contact End ***/
 
 

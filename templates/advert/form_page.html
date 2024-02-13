@@ -28,7 +28,14 @@
             {% endif %}
             <div class="row g-5">
                 <div class="col-lg-8 wow fadeIn" style="margin-left: auto; margin-right: auto;" data-wow-delay=".5s">
-                    <form class="p-5 rounded contact-form" action="/post-your-ad/" method="POST">
+                    <form class="p-5 rounded contact-form" action="{% pageurl page%}" method="POST">
+                        {% csrf_token %}
+                        {{  form|crispy }}
+                        <div class="text-start">
+                            <button class="btn bg-primary text-white py-3 px-5" type="submit">Send Message | संदेश पाठवा</button>
+                        </div>
+                    </form>
+                    <!-- <form class="p-5 rounded contact-form" action="{% pageurl page %}" method="POST">
                         {% csrf_token %}
                         {% for field in form.visible_fields %}
                         <div class="mb-4">
@@ -40,12 +47,11 @@
                                 name="{{ field.name }}" id="{{ field.id_for_label }}"
                                 {% if field.field.required %}required="required"{% endif %}>
                         </div>      
-                        {{field.}}                  
                         {% endfor %}
                         <div class="text-start">
                             <button class="btn bg-primary text-white py-3 px-5" type="submit">Send Message | संदेश पाठवा</button>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -53,9 +59,6 @@
 </div>
 <!-- Contact End -->
 
-{% for field in form.visible_fields %}
-{{field.field.required}}
-{% endfor %}
 
 
 

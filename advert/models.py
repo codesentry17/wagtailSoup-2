@@ -1,7 +1,7 @@
 from django.db import models
 
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail import blocks
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
@@ -25,9 +25,11 @@ class FormPage(AbstractForm):
 
 
     content_panels = AbstractForm.content_panels + [
-        FieldPanel("header"),
-        FieldPanel("sub_header"),
-        FieldPanel("extra_info"),
+        MultiFieldPanel([
+            FieldPanel("header"),
+            FieldPanel("sub_header"),
+            FieldPanel("extra_info")
+        ], heading="Non-Form Data"),
         InlinePanel("form_fields", label="Field")
     ]
 
