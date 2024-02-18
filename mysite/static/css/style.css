@@ -667,7 +667,7 @@
 
 form label{
     display: block;
-    text-align: center;
+    text-align: left;
     font-size: larger;
     font-weight: bold;
     color: var(--bs-primary);
