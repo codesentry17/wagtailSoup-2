@@ -184,35 +184,3 @@ class FormPage(AbstractForm):
             # note: Wagtail 3.0 & beyond will no longer need to wrap this in json.dumps as it uses Django's JSONField under the hood now - https://docs.wagtail.org/en/stable/releases/3.0.html#replaced-form-data-textfield-with-jsonfield-in-abstractformsubmission
             page=self,
         )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class FormField(AbstractFormField):
-
-#     page = ParentalKey("FormPage", related_name = 'form_fields', on_delete=models.CASCADE)
-
-
-
-
-

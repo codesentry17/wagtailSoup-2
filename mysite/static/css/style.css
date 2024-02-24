@@ -166,6 +166,10 @@
     background: rgba(0, 0, 0, .6);
 }
 
+.carousel-item.no-background::after {
+    background: none;
+}
+
 .carousel-caption {
     height: 100%;
     display: flex;
@@ -200,6 +204,17 @@
     height: 60px;
     position: absolute;
     top: 50%;
+    right: 0;
+    background: var(--bs-primary);
+    border-radius: 50px 0 0 50px;
+    opacity: 1;
+}
+
+.carousel-control-next.ads {
+    width: 20px;
+    height: 70px;
+    position: absolute;
+    top: 80%;
     right: 0;
     background: var(--bs-primary);
     border-radius: 50px 0 0 50px;
@@ -784,7 +799,7 @@ body {
 
 .img-thumbnail {
     padding: 0.25rem;
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     border: 1px solid #dee2e6;
     max-width: 100%;
     height: auto;
@@ -822,3 +837,6 @@ float: right !important;
 .my-5 {
   margin-bottom: 3rem !important;
 }
+
+
+

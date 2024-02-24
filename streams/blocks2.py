@@ -8,14 +8,14 @@ class Section(blocks.StructBlock):
     header = blocks.CharBlock()
 
     image = ImageChooserBlock(required=False, help_text="image for the paragraph")
-    iamge_position = blocks.ChoiceBlock(
+    image_position = blocks.ChoiceBlock(
         [
-            ("C", "Full Central"),
             ("L", "Left Aligned"),
             ("R", "Right Aligned"),
         ],
         required=False,
-        help_text="Tells where the image should be positioned"
+        help_text="Image position (default Center)",
+        
     )
 
     body = blocks.RichTextBlock()
