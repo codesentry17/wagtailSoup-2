@@ -211,13 +211,13 @@
 }
 
 .carousel-control-next.ads {
-    width: 20px;
-    height: 70px;
+    width: 94px;
+    height: 45px;
     position: absolute;
-    top: 80%;
-    right: 0;
+    top: 226px;
+    right: -52px;
     background: var(--bs-primary);
-    border-radius: 50px 0 0 50px;
+    border-radius: 158px 168px 169px 166px;
     opacity: 1;
 }
 

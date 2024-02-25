@@ -50,7 +50,7 @@
             </div>
 
 
-            <div class="media bg-primary text-white mb-5 p-4 p-md-5">
+            <!-- <div class="media bg-primary text-white mb-5 p-4 p-md-5">
                 <img src="img/user.jpg" alt="Image" class="img-thumbnail p-3 mr-4 mt-1 bg-primary" style="width:100px;">
                 <div class="media-body">
                     <h5 class="mb-3">John Doe</h5>
@@ -58,7 +58,7 @@
                         conset lorem ipsum, ipsum accusam ipsum sit no ut est. Guber ea ipsum erat conset magna kasd
                         amet est magna elitr ea sit justo sed sanctus.</p>
                 </div>
-            </div>
+            </div> -->
 
             <div class="mb-5">
                 <div id="disqus_thread"></div>
@@ -71,7 +71,7 @@
                     <img src="img/blog-1.jpg" alt="" class="img-thumbnail p-3">
                 </div> -->
             <div class="mb-5">
-                <h4 class="mb-4">Recent Posts</h4>
+                <h4 class="mb-4">Other Blogs</h4>
                 {% for blog in page.get_siblings %}
                 {% if blog.url != page.url %}
                 <a href="{{blog.url}}" class="d-flex align-items-center border-bottom mb-3 pb-3">
@@ -101,11 +101,10 @@
                     </div> -->
             </div>
 
-            <br><br>
 
             <!-- Carousel Start -->
             
-            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="position: sticky; top: 100px;">
+            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="font-size:smaller; position: sticky; top: 100px;">
                 <h4 class="mb-4">Advertisement</h4>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item no-background active">
@@ -117,14 +116,14 @@
                                     <span class="text-dark"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
                                 </div>
                                 <div class="px-4 pb-0">
-                                    <h4>How To Build A Cleaning Plan</h4>
+                                    <h6>How To Build A Cleaning Plan</h6>
                                     <p>Lorem ipsum dolor sit amet consectur adip sed eiusmod tempor.</p>
                                 </div>
                                 <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item no-background">
+                                        <div class="carousel-item no-background">
                         <div class="blog-item">
                             <img src="{% static 'img/blog-1.jpg' %}" class="img-fluid w-100 rounded-top" alt="">
                             <div class="rounded-bottom bg-light">
@@ -140,7 +139,7 @@
                                 
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
                 <button class="carousel-control-next ads" type="button" data-bs-target="#carouselId" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>

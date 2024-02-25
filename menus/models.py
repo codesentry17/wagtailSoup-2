@@ -6,7 +6,7 @@ from wagtail.snippets.models import register_snippet
 from wagtail.models import TranslatableMixin
 
 
-from wagtail.admin.panels import FieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, PageChooserPanel, FieldRowPanel, MultiFieldPanel
 from wagtail.models import Orderable
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -20,13 +20,17 @@ class PageList(Orderable):
     
     page_link = models.ForeignKey(
         'wagtailcore.Page',
+        blank=True,
         null=True,
         related_name='+',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
 
+    external_resource = models.URLField(blank=True, null=True, help_text="URL, don't forget to include 'Nav Title'")
+
     panels = [
-        PageChooserPanel('page_link')
+        PageChooserPanel('page_link'),
+        FieldPanel('external_resource')
     ]
 
 
@@ -53,7 +57,10 @@ class NavTab(ClusterableModel, Orderable):
 
     def save(self, **kwargs):
         if not self.nav_title:
-            self.nav_title = self.page_list.first().page_link.title
+            try:
+                self.nav_title = self.page_list.first().page_link.title
+            except:
+                self.nav_title = "Unlabelled"
         super(NavTab,self).save(**kwargs)
 
     def __str__(self) -> str:
@@ -82,5 +89,5 @@ class Navbar(ClusterableModel, TranslatableMixin):
         unique_together = ('translation_key', 'locale')
 
     def __str__(self) -> str:
-        return "Navbar"
+        return self.name1+' '+self.name2+' Navbar'
     

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "wagtail_localize",
     "wagtail_localize.locales",
 
+    "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -90,7 +91,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "menus.context_processor.get_nav_tab"
+                "menus.context_processor.get_nav_tab",
+                "wagtail.contrib.settings.context_processors.settings",
             ],
         },
     },
