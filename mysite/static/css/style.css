@@ -5,13 +5,13 @@
     visibility: hidden;
     transition: opacity .8s ease-out, visibility 0s linear .5s;
     z-index: 99999;
- }
+}
 
- #spinner.show {
-     transition: opacity .8s ease-out, visibility 0s linear .0s;
-     visibility: visible;
-     opacity: 1;
- }
+#spinner.show {
+    transition: opacity .8s ease-out, visibility 0s linear .0s;
+    visibility: visible;
+    opacity: 1;
+}
 
 /*** Spinner End ***/
 
@@ -94,8 +94,13 @@
 }
 
 @keyframes mymove {
-    from {left: -100%;}
-    to {left: 100%;}
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
 }
 
 /*** Topbar End ***/
@@ -111,7 +116,7 @@
     color: var(--bs-white);
     font-size: 18px;
     outline: none;
-    
+
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -278,7 +283,7 @@
     .carousel-item {
         min-height: 500px;
     }
-    
+
     .carousel-item img {
         min-height: 500px;
         object-fit: cover;
@@ -297,7 +302,7 @@
     .carousel-item {
         min-height: 400px;
     }
-    
+
     .carousel-item img {
         min-height: 400px;
         object-fit: cover;
@@ -336,7 +341,7 @@
 
 /*** Services End ***/
 .service .service-item {
-    box-shadow: 0 0 45px rgba(0, 0, 0, .2) ;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .2);
 }
 
 .service .service-item .service-img {
@@ -360,7 +365,7 @@
     border-top-left-radius: 10px;
     transition: 0.5s;
     z-index: 5;
-    
+
 }
 
 .service .service-item:hover .service-img::before {
@@ -407,6 +412,7 @@
     color: var(--bs-white);
     z-index: 9;
 }
+
 .service .service-item:hover .service-content .service-content-inner h5 {
     color: var(--bs-primary);
 }
@@ -494,7 +500,7 @@
     position: absolute;
     top: 6px;
     left: -140px;
-    
+
 }
 
 .blog-btn-icon:hover .blog-icon-2 {
@@ -503,10 +509,12 @@
     top: 6px;
     padding-bottom: 5px;
 }
+
 .blog-icon-1 {
     position: relative;
     top: -4px;
 }
+
 .blog-btn-icon:hover .blog-icon-1 {
     top: 0;
     right: -140px;
@@ -680,7 +688,7 @@
     background: #26d48c;
 }
 
-form label{
+form label {
     display: block;
     text-align: left;
     font-size: larger;
@@ -736,7 +744,7 @@ form label{
     transform: translateY(-50%);
     margin-top: 8px;
     margin-left: -100px;
-    border: 1px solid var(--bs-primary) ;
+    border: 1px solid var(--bs-primary);
 }
 
 .section-title .sub-style::after {
@@ -748,7 +756,7 @@ form label{
     transform: translateY(-50%);
     margin-bottom: 5px;
     margin-left: -50px;
-    border: 1px solid var(--bs-primary) ;
+    border: 1px solid var(--bs-primary);
 }
 
 
@@ -768,7 +776,7 @@ form label{
     transform: translateY(-50%);
     margin-top: 8px;
     margin-right: -100px;
-    border: 1px solid var(--bs-primary) ;
+    border: 1px solid var(--bs-primary);
 }
 
 .sub-title::after {
@@ -780,7 +788,7 @@ form label{
     transform: translateY(-50%);
     margin-bottom: 8px;
     margin-right: -50px;
-    border: 1px solid var(--bs-primary) ;
+    border: 1px solid var(--bs-primary);
 }
 
 
@@ -790,9 +798,10 @@ form label{
 body {
     padding-top: 60px;
 }
+
 @media (max-width: 450px) {
     body {
-      padding-top: 100px;
+        padding-top: 100px;
     }
 }
 
@@ -803,15 +812,15 @@ body {
     border: 1px solid #dee2e6;
     max-width: 100%;
     height: auto;
-  }
+}
 
 
 .float-left {
-float: left !important;
+    float: left !important;
 }
 
 .float-right {
-float: right !important;
+    float: right !important;
 }
 
 .p-3 {
@@ -824,19 +833,175 @@ float: right !important;
 
 .mr-4,
 .mx-4 {
-  margin-right: 1.5rem !important;
+    margin-right: 1.5rem !important;
 }
 
 .mb-3,
 .my-3 {
-  margin-bottom: 1rem !important;
+    margin-bottom: 1rem !important;
 }
 
 
 .mb-5,
 .my-5 {
-  margin-bottom: 3rem !important;
+    margin-bottom: 3rem !important;
 }
 
 
 
+
+
+.modal {
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.modal p {
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.modal .logo a img {
+    width: 30px;
+}
+
+.modal .modal-content {
+    background-color: transparent;
+    border: none;
+    border-radius: 7px;
+}
+
+.modal .modal-content .modal-body {
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: #efefef;
+    padding-left: 0px;
+    padding-right: 0px;
+    -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+}
+
+.modal .modal-content .modal-body h2 {
+    font-size: 18px;
+}
+
+.modal .modal-content .modal-body p {
+    color: #777;
+    font-size: 14px;
+}
+
+.modal .modal-content .modal-body h3 {
+    color: #000;
+    font-size: 22px;
+}
+
+.modal .modal-content .modal-body .close-btn {
+    color: #000;
+}
+
+.modal .modal-content .modal-body .promo-img {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+}
+
+.modal .modal-content .modal-body .promo-img .price {
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    color: #fff;
+    font-size: larger;
+}
+
+.modal .cancel {
+    color: gray;
+    font-size: 14px;
+}
+
+.modal .btn-primary {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logo img {
+    width: 70px;
+}
+
+.line {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.line:after {
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: absolute;
+    content: "";
+    width: 70px;
+    height: 1px;
+    background: #ccc;
+}
+
+.custom-note {
+    color: #999;
+}
+
+.custom-note a {
+    color: #555;
+    font-weight: 900 !important;
+}
+
+.social a {
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.social a .heart {
+    color: #dc3545;
+}
+
+.social .like .icon {
+    color: #dc3545;
+}
+
+.social .message .icon {
+    color: #007bff;
+}
+
+.social .add .icon {
+    color: #007bff;
+}
+
+.share {
+    position: absolute;
+    right: 20px;
+    color: #ccc;
+    z-index: 4;
+}
+
+.share:hover {
+    color: #000;
+}
+
+
+
+.parent-div {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure the parent div fills the height */
+}
+
+.child-div {
+    flex-grow: 1; /* Make the child divs grow to fill available space */
+}

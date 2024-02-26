@@ -1,0 +1,51 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- Modal -->
+
+{% for ad in ads %}
+
+<div class="modal fade" id="exampleModal{{ad.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-body py-0"">
+
+
+                <div class="d-flex main-content">
+                    <!-- <div class="bg-image promo-img mr-3" style="background-image: url('{% static "img/blog-1.jpg" %}');"></div> -->
+                    <!-- <div class="bg-image promo-img mr-3" style="background-image: url('{% static "img/blog-1.jpg" %}');"></div> -->
+                    <!-- <img src="{% static "img/blog-1.jpg" %}" class="bg-image promo-img mr-3"> -->
+                    
+                    {% image ad.photo min-500x400 class="mr-3" style="width:50%;" %}
+
+                    <div class="content-text p-4 px-5 align-item-stretch">
+                        <div class="text-center parent-div">
+
+                            <h1 class="child-div">{{ad.title}}</h1>
+                            
+                            <div class="child-div" style="display: flex; justify-content: space-between;">
+                                <span>Website</span>
+                                <span>{{ad.phone}}</span>
+                                <span>{{ad.email}}</span>
+                            </div>
+
+                            <p class="child-div">{{ad.description}}</p>
+
+                            <div class="child-div" style="display: flex; justify-content: space-between;">
+                                <span>Element 1</span>
+                                <span>Element 2</span>
+                                <span>Element 3</span>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
