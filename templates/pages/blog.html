@@ -6,13 +6,6 @@
 
 {% include 'components/page_intro.html' %}
 
-<!-- Testing purpose button below for modal -->
-<div class="mb-5">
-    <button type="button" class="mb-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-        Launch demo modal
-    </button>
-</div>
-
 <!-- Detail Start -->
 <div class="container py-5">
     <div class="row">
@@ -80,7 +73,9 @@
                     <img src="img/blog-1.jpg" alt="" class="img-thumbnail p-3">
                 </div> -->
             <div class="mb-5">
-                <h4 class="mb-4">Other Blogs</h4>
+                {% if page.blog_list_header %}
+                <h4 class="mb-4">{{page.blog_list_header}}</h4>
+                {% endif %}
                 {% for blog in page.get_siblings %}
                 {% if blog.url != page.url %}
                 <a href="{{blog.url}}" class="d-flex align-items-center border-bottom mb-3 pb-3">
@@ -111,51 +106,46 @@
             </div>
 
 
-            <!-- Carousel Start -->
-            
             <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="font-size:smaller; position: sticky; top: 100px;">
-                <h4 class="mb-4">Advertisement</h4>
+                {% if page.advertisement_header %}
+                <h4 class="mb-4">{{page.advertisement_header}}</h4>
+                {% endif %}
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item no-background active">
-                        <div class="blog-item">
-                            <img src="{% static 'img/blog-1.jpg' %}" class="img-fluid w-100 rounded-top" alt="">
-                            <div class="rounded-bottom bg-light">
-                                <!-- <div class="d-flex justify-content-between p-4 pb-2">
-                                    <span class="pe-2 text-dark"><i class="fa fa-user me-2"></i>By Admin</span>
-                                    <span class="text-dark"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
-                                </div> -->
-                                <div class="px-4 pb-0" style="padding-top: 10px;">
-                                    <h6>How To Build A Cleaning Plan</h6>
-                                    <p>Lorem ipsum dolor sit amet consectur adip sed eiusmod tempor.</p>
-                                </div>                    
-                                <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
+                    {% for ad in ads %}
+                    <div class="carousel-item no-background {% if forloop.first %}active{% endif %}">
+                        <a data-bs-toggle="modal" href="#exampleModal{{ad.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <div class="blog-item">
+                                {% image ad.photo max-500x500 class="img-fluid w-100 rounded-top" alt="{{ad.photo.title}}" %}
+                                <div class="rounded-bottom bg-light">
+                                    <div class="px-4 pb-0" style="padding-top: 10px;">
+                                        <h6>~ {{ad.title}} ~</h6>
+                                        <p style=" 
+                                            height: 60px;
+                                            display: -webkit-box;
+                                            -webkit-box-orient: vertical;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            -webkit-line-clamp: 3;
+                                            color: #787878;">{{ad.description}}
+                                        </p>
+                                    </div>
+                                    <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="carousel-item no-background">
-                        <div class="blog-item">
-                            <img src="{% static 'img/blog-1.jpg' %}" class="img-fluid w-100 rounded-top" alt="">
-                            <div class="rounded-bottom bg-light">
-                                <!-- <div class="d-flex justify-content-between p-4 pb-2">
-                                    <span class="pe-2 text-dark"><i class="fa fa-user me-2"></i>By Admin</span>
-                                    <span class="text-dark"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
-                                </div> -->
-                                <div class="px-4 pb-0" style="padding-top: 10px;">
-                                    <h6>How To Build A Cleaning Plan</h6>
-                                    <p>Lorem ipsum dolor sit amet consectur adip sed eiusmod tempor.</p>
-                                </div>                    
-                                <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
-                            </div>
-                        </div>
-                    </div>
+                    {% empty %}
+                    Post Your Ad
+                    {% endfor %}
                 </div>
                 <button class="carousel-control-next ads" type="button" data-bs-target="#carouselId" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            
-            <!-- Carousel End -->
+
+
+
 
 
             
@@ -186,7 +176,8 @@
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })(); 
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-{% endblock %}
+</script>
+
+
+{% endblock %}  
