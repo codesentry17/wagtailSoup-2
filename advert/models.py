@@ -209,7 +209,7 @@ class Ad(models.Model):
         related_name='+'
     )
     title = models.CharField(max_length=30)                         
-    description = models.CharField(max_length=50)                   
+    description = models.CharField()                   
     website = models.URLField(blank=True, null=True)
     phone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True, null=True)

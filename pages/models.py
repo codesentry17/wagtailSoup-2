@@ -60,7 +60,7 @@ class Blog(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    short_description = models.CharField(max_length=70, blank=True)
+    short_description = models.CharField(blank=True)
 
     component = StreamField([
         ('section',bk2.Section())

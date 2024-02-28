@@ -219,7 +219,7 @@
     width: 94px;
     height: 45px;
     position: absolute;
-    top: 226px;
+    top: 170px;
     right: -52px;
     background: var(--bs-primary);
     border-radius: 158px 168px 169px 166px;
@@ -925,77 +925,6 @@ body {
 }
 
 
-.bg-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.logo img {
-    width: 70px;
-}
-
-.line {
-    position: relative;
-    padding-bottom: 20px;
-}
-
-.line:after {
-    left: 50%;
-    bottom: 0;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    position: absolute;
-    content: "";
-    width: 70px;
-    height: 1px;
-    background: #ccc;
-}
-
-.custom-note {
-    color: #999;
-}
-
-.custom-note a {
-    color: #555;
-    font-weight: 900 !important;
-}
-
-.social a {
-    font-size: 14px;
-    color: #b3b3b3;
-}
-
-.social a .heart {
-    color: #dc3545;
-}
-
-.social .like .icon {
-    color: #dc3545;
-}
-
-.social .message .icon {
-    color: #007bff;
-}
-
-.social .add .icon {
-    color: #007bff;
-}
-
-.share {
-    position: absolute;
-    right: 20px;
-    color: #ccc;
-    z-index: 4;
-}
-
-.share:hover {
-    color: #000;
-}
-
-
-
 .parent-div {
     display: flex;
     flex-direction: column;
@@ -1004,4 +933,10 @@ body {
 
 .child-div {
     flex-grow: 1; /* Make the child divs grow to fill available space */
+}
+
+
+.modal-body a{
+    color: #777;
+    font-size: 14px;
 }
