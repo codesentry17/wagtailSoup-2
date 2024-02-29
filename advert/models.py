@@ -48,18 +48,21 @@ class CustomSubmissionsListView(SubmissionsListView):
 
                 for idx, (value, field_type) in enumerate(zip(fields, field_types)):
                     if field_type == 'image' and value:
-                        image = ImageModel.objects.get(pk=value)
-                        rendition = image.get_rendition('fill-100x75|jpegquality-40')
-                        preview_url = rendition.url
-                        url = reverse('wagtailimages:edit', args=(image.id,))
-                        # build up a link to the image, using the image title & id
-                        fields[idx] = format_html(
-                            "<a href='{}'><img alt='Uploaded image - {}' src='{}' />{}</a>",
-                            url,
-                            image.title,
-                            preview_url,
-                            image.title,
-                        )
+                        try:
+                            image = ImageModel.objects.get(pk=value)
+                            rendition = image.get_rendition('fill-100x75|jpegquality-40')
+                            preview_url = rendition.url
+                            url = reverse('wagtailimages:edit', args=(image.id,))
+                            # build up a link to the image, using the image title & id
+                            fields[idx] = format_html(
+                                "<a href='{}'><img alt='Uploaded image - {}' src='{}' />{}</a>",
+                                url,
+                                image.title,
+                                preview_url,
+                                image.title,
+                            )
+                        except ImageModel.DoesNotExist:
+                                print("Admin has deleted the image from the images database")
 
         return context
 

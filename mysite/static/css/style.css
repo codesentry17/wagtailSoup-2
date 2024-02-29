@@ -161,6 +161,16 @@
     position: relative;
 }
 
+.carousel-item.home::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .6);
+}
+
 .carousel-item::after {
     width: 100%;
     height: 100%;
@@ -941,3 +951,8 @@ body {
 }
 
 
+@media (min-width: 992px){
+    .modal-lg, .modal-xl {
+        max-width: 1000px;
+    }
+}
