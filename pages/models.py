@@ -43,6 +43,18 @@ class Wiggle(Page):
         return context
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 class Blog(Page):
     """This is going to create blog pages"""
 

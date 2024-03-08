@@ -240,7 +240,7 @@
     height: 32px;
     position: relative;
     top: -31px;
-    right: -213px;
+    left: 85%;
     background: var(--bs-primary);
     border-radius: 158px 168px 169px 166px;
     opacity: 1;
@@ -966,4 +966,16 @@ body {
     .modal-lg, .modal-xl {
         max-width: 1000px;
     }
+}
+
+
+.blog_body iframe {
+    width: 60%;
+    height: 300px;
+    padding: 0.75rem;
+    background-color: #f0f0f0;
+    border: 1px solid #dee2e6;
+    float: left;
+    margin-right: 16px; /* Equivalent to mr-4 */
+    margin-bottom: 12px; /* Equivalent to mb-3 */
 }
