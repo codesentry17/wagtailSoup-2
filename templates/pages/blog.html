@@ -81,7 +81,7 @@
                 <a href="{{blog.url}}" class="d-flex align-items-center border-bottom mb-3 pb-3">
                     {% image blog.specific.header_image fill-1000x800 class="img-thumbnail p-2" alt="blog.specific.header_image.title" style="width: 80px; height: 80px;" %}
                     <!-- <img class="img-thumbnail p-2" src="img/blog-1.jpg" style="width: 80px; height: 80px;" alt=""> -->
-                    <div class="d-flex flex-column pl-3">
+                    <div class="d-flex flex-column" style="padding-left: 10px;">
                         <div class="font-weight-bold text-secondary mb-2">{{blog.title}}</div>
                         <div class="d-flex">
                             <!-- <small href="{{blog.full_url}}#disqus_thread" class="mr-3"># Comments</small> -->
@@ -106,48 +106,12 @@
             </div>
 
 
-            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="font-size:smaller; position: sticky; top: 100px;">
-                {% if page.advertisement_header %}
-                <h4 class="mb-4">{{page.advertisement_header}}</h4>
-                {% endif %}
-                <div class="carousel-inner" role="listbox">
-                    {% for ad in ads %}
-                    <div class="carousel-item no-background {% if forloop.first %}active{% endif %}">
-                        <a data-bs-toggle="modal" href="#exampleModal{{ad.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <div class="blog-item">
-                                {% image ad.photo max-500x500 class="img-fluid w-100 rounded-top" alt="{{ad.photo.title}}" %}
-                                <div class="rounded-bottom bg-light">
-                                    <div class="px-4 pb-0" style="padding-top: 10px;">
-                                        <h6>~ {{ad.title}} ~</h6>
-                                        <p style=" 
-                                            height: 60px;
-                                            display: -webkit-box;
-                                            -webkit-box-orient: vertical;
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;
-                                            -webkit-line-clamp: 3;
-                                            color: #787878;">{{ad.description}}
-                                        </p>
-                                    </div>
-                                    <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {% empty %}
-                    Post Your Ad
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-next ads" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
 
-
-
-
-
+            <!--  showing Advetisement if enabled -->
+            {% if page.show_advertisement %}
+            {% include 'includes/ad_panel.html' %}
+            {% endif %}
+           
             
 
 

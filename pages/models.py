@@ -59,9 +59,10 @@ class Blog(Page):
         [("section", bk2.Section())], use_json_field=True, collapsed=True, blank=True
     )
 
-    blog_list_header = models.CharField(max_length=20, blank=True, null=True)
+    blog_list_header = models.CharField(max_length=20, blank=True, null=True, default="Other Blogs")
 
-    advertisement_header = models.CharField(max_length=20, blank=True, null=True)
+    show_advertisement = models.BooleanField(default=True, blank=True)
+    advertisement_header = models.CharField(max_length=20, blank=True, null=True, default="Advertisement")
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -80,6 +81,7 @@ class Blog(Page):
         MultiFieldPanel(
             [
                 FieldPanel("blog_list_header"),
+                FieldPanel('show_advertisement'),
                 FieldPanel("advertisement_header")
             ],
             heading="Right Section"

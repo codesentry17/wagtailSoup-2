@@ -208,28 +208,39 @@
     opacity: 1;
 }
 
+.carousel-control-prev.ads {
+    width: 50px;
+    height: 32px;
+    position: relative;
+    top: 1px;
+    right: 0px;
+    background: var(--bs-primary);
+    border-radius: 158px 168px 169px 166px;
+    opacity: 1;
+}
+
 .carousel-control-prev:hover {
     background: var(--bs-secondary);
     transition: .8s;
 }
 
 .carousel-control-next {
-    width: 90px;
-    height: 60px;
+    width: 50px;
+    height: 32px;
     position: absolute;
-    top: 50%;
-    right: 0;
+    top: 296px;
+    right: 0px;
     background: var(--bs-primary);
-    border-radius: 50px 0 0 50px;
+    border-radius: 158px 168px 169px 166px;
     opacity: 1;
 }
 
 .carousel-control-next.ads {
-    width: 94px;
-    height: 45px;
-    position: absolute;
-    top: 170px;
-    right: -52px;
+    width: 50px;
+    height: 32px;
+    position: relative;
+    top: -31px;
+    right: -213px;
     background: var(--bs-primary);
     border-radius: 158px 168px 169px 166px;
     opacity: 1;

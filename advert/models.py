@@ -30,6 +30,11 @@ from django.urls import reverse
 from wagtail.models import Collection
 
 
+
+from wagtailcaptcha.models import WagtailCaptchaForm
+from wagtailcaptcha.forms import WagtailCaptchaFormBuilder
+
+
 class CustomSubmissionsListView(SubmissionsListView):
     
     def get_context_data(self, **kwargs):
@@ -78,9 +83,12 @@ class FormField(AbstractFormField):
 
     page = ParentalKey('FormPage', related_name='form_fields', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "check"
 
 
-class CustomFormBuilder(FormBuilder):
+
+class CustomFormBuilder(WagtailCaptchaFormBuilder):
 
     def create_image_field(self, field, options):
         return WagtailImageField(**options)
@@ -88,7 +96,7 @@ class CustomFormBuilder(FormBuilder):
 
 
 
-class FormPage(AbstractForm):
+class FormPage(WagtailCaptchaForm):
 
     form_builder = CustomFormBuilder
 
@@ -116,6 +124,9 @@ class FormPage(AbstractForm):
 
     header = models.CharField()
     sub_header = models.CharField()
+    show_advertisement = models.BooleanField(default=True, blank=True)
+    advertisement_header = models.CharField(max_length=50, blank=True, null=True)
+    
 
     extra_info = StreamField([
         ('Block',blocks.StructBlock([
@@ -129,9 +140,13 @@ class FormPage(AbstractForm):
         MultiFieldPanel([
             FieldPanel("header"),
             FieldPanel("sub_header"),
-            FieldPanel("extra_info")
-        ], heading="Non-Form Data"),
-        InlinePanel("form_fields", label="Field")
+            FieldPanel("extra_info"),
+        ], heading="Extra Data"),
+        InlinePanel("form_fields", label="Field"),
+        MultiFieldPanel([
+            FieldPanel('show_advertisement'),
+            FieldPanel('advertisement_header')
+        ], heading="Left Side")
     ]
 
 
@@ -166,7 +181,7 @@ class FormPage(AbstractForm):
                     kwargs = {
                         'file': cleaned_data[name],
                         'title': self.get_image_title(cleaned_data[name].name),
-                        # 'collection': self.get_uploaded_image_collection(),
+                        'collection': self.get_uploaded_image_collection(),
                     }
 
                     if form.user and not form.user.is_anonymous:
@@ -183,8 +198,6 @@ class FormPage(AbstractForm):
 
         return self.get_submission_class().objects.create(
             form_data=form.cleaned_data, 
-            # cls=DjangoJSONEncoder, 
-            # note: Wagtail 3.0 & beyond will no longer need to wrap this in json.dumps as it uses Django's JSONField under the hood now - https://docs.wagtail.org/en/stable/releases/3.0.html#replaced-form-data-textfield-with-jsonfield-in-abstractformsubmission
             page=self,
         )
 
