@@ -23,13 +23,13 @@
             </div>
             <!-- This is where the blog content goes paras and images that i need to richtext iterate -->
 
+            {% for component in page.component %}
             <div class="mb-5 blog_body">
-                {% for component in page.component %}
 
                 {% if component.block.name == 'section' %}
                 {% with thing=component.value %}
 
-                <h2 class="mb-4">{{thing.header}}</h2>
+                <h2 class="mt-2 mb-4" style="clear: both;">{{thing.header}}</h2>
                 <!-- <img class="img-thumbnail p-3 w-50 float-left mr-4 mb-3" src="img/blog-1.jpg" alt="Image"> -->
                 {% if thing.image_position == "L" %}
                     {% image thing.image fill-500x500 class="img-thumbnail p-3 w-50 float-left mr-4 mb-3" alt="thing.image.title" %}
@@ -45,9 +45,9 @@
                 {% endwith %}
                 {% endif %}
 
-                {% endfor %}
-
+                
             </div>
+            {% endfor %}
 
 
             <!-- <div class="media bg-primary text-white mb-5 p-4 p-md-5">
