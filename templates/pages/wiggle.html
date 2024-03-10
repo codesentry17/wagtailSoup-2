@@ -26,11 +26,19 @@
 
 {% include 'components/blog-cards.html' with block=component.value %}
 
+{% elif component.block.name == 'team_section' %}
+
+{% include 'components/team-cards.html' with block=component.value %}
+
+{% elif component.block.name == 'fact_band' %}
+
+{% include 'components/facts-band.html' with block=component.value %}
+
 {% endif %}
 
 {% endfor %}
 
-{% include 'components/team-cards.html' %}
+
 
 
 {% endblock %}

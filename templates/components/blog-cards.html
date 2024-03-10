@@ -16,13 +16,13 @@
 
             {% for blog in child_blogs.specific %}
             <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.{{forloop.counter0}}s">
-                <div class="service-item rounded">
+                <div class="service-item rounded"  onclick="location.href='{{blog.url}}';" style="cursor: pointer;">
                     <div class="service-img rounded-top">
                         <!-- <img src="{{card.card_image.url}}" class="img-fluid rounded-top w-100" alt=""> -->
                         {% image blog.header_image fill-900x700 class="img-fluid rounded-top w-100" alt="blog.card_image.title" %}
                     </div>
-                    <div class="service-content rounded-bottom bg-light p-4" onclick="location.href='{{blog.url}}';"
-                        style="cursor: pointer; height: 200px;">
+                    <div class="service-content rounded-bottom bg-light p-4"
+                        style="height: 200px;">
                         <div class="service-content-inner">
                             <h5 class="mb-1">{{blog.title}}</h5> <i class="fa fa-comments text-primary"></i> <span class="disqus-comment-count" data-disqus-identifier="{{blog.slug}}"></span>
                             <p class="mt-3" style="display: -webkit-box;
@@ -30,13 +30,13 @@
                             overflow: hidden;
                             text-overflow: ellipsis;
                             -webkit-line-clamp: 3;">{{blog.short_description}}</p>
-                        </div>
+                        </div>  
                     </div>
                 </div>
             </div>
             {% empty %}
             <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
-                <p class="mb-0" style="font-size: larger;">NO BLOG PAGES YET</p>
+                <p class="mb-0" style="font-size: larger;">-------</p>
             </div>
             {% endfor %}
 

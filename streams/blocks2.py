@@ -27,3 +27,18 @@ class Section(blocks.StructBlock):
 
 
 
+
+class Fact(blocks.StructBlock):
+    """for individual facts"""
+    number = blocks.IntegerBlock()
+    fact = blocks.CharBlock(max_length=50)
+
+
+class FactsBand(blocks.StructBlock):
+    """for the whole band"""
+
+    facts = blocks.ListBlock(Fact())
+
+    class Meta:
+        help_text = "COMPONENT FOR RENDERING FACT BAND"
+        label_format = "Fact Band Component"

@@ -53,11 +53,23 @@ class AboutUs(blocks.StructBlock):
 class BlogSection(blocks.StructBlock):
     """This is for the blog Section"""
     
-    pre_header = blocks.CharBlock(max_length=20)
-    header = blocks.CharBlock(max_length=50)
+    pre_header = blocks.CharBlock()
+    header = blocks.CharBlock()
     sub_header = blocks.CharBlock()
 
     class Meta:
         help_text = "COMPONENT TO RENDER BLOG CARDS (ONLY IF CHILD PAGE EXISTS)"
         label_format = "Blog Section Component"
 
+
+
+
+class TeamSection(blocks.StructBlock):
+    """This is for team section"""
+
+    pre_header = blocks.CharBlock()
+    header = blocks.CharBlock()
+
+    class Meta:
+        help_text = "COMPONENT TO RENDER THE TEAM MEMBERS"
+        label_format = "Team Section Component"

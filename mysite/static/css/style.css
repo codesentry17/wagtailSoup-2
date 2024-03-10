@@ -335,6 +335,10 @@
     .carousel-item p {
         font-size: 14px !important;
     }
+
+    .blog_body iframe {
+        display: block;
+    }   
 }
 
 .page-header {
@@ -978,4 +982,12 @@ body {
     float: left;
     margin-right: 16px; /* Equivalent to mr-4 */
     margin-bottom: 12px; /* Equivalent to mb-3 */
+}
+
+@media (max-width: 768px) {
+    .blog_body iframe {
+        float: none;
+        width: 100%;
+        margin-right: 0; /* Reset margin */
+    }
 }

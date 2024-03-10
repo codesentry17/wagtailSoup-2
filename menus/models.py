@@ -71,14 +71,22 @@ class NavTab(ClusterableModel, Orderable):
 class Navbar(ClusterableModel, TranslatableMixin):
     """the navbar that holds NavTabs"""
 
-    name1 = models.CharField(max_length=15)
+    name1 = models.CharField(max_length=15, blank=True, null=True)
     name2 = models.CharField(max_length=15)
+    redirect = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     panels = [
         FieldRowPanel(
             [
                 FieldPanel('name1'),
-                FieldPanel('name2')
+                FieldPanel('name2'),
+                PageChooserPanel('redirect')
             ],
             heading="WebSite Name",
         ),

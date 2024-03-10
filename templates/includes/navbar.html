@@ -2,7 +2,7 @@
 
 {% load wagtailcore_tags  %}
 
-<div class="container-fluid bg-primary" style="
+<div class="container-fluid bg-primary pt-2" style="
     position: fixed;
     top: 0;
     right: 0;
@@ -12,7 +12,7 @@
     ">
     <div class="container">
         <nav class="navbar navbar-dark navbar-expand-lg py-0">
-            <a href="{% pageurl page %}" class="navbar-brand">
+            <a href="{{WebNameOnClick.url}}" class="navbar-brand">
                 <h1 class="text-white fw-bold d-block">{{WebName1}}<span class="text-secondary">{{WebName2}}</span> </h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

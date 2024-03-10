@@ -24,3 +24,5 @@ class Team(TranslatableMixin):
 
 
 # Create your models here.
+    
+

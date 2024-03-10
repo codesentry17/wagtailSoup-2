@@ -36,8 +36,7 @@ INSTALLED_APPS = [
 
     "wagtail_localize",
     "wagtail_localize.locales",
-    "wagtail_localize.modeladmin",
-    "wagtail.contrib.modeladmin",
+
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -101,7 +100,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "menus.context_processor.get_nav_tab",
                 "advert.context_processor.get_ads",
-                "teammembers.context_processor.get_team_cards",
                 "wagtail.contrib.settings.context_processors.settings",
             ],
         },
@@ -195,7 +193,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mysite"
+WAGTAIL_SITE_NAME = "Project"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html

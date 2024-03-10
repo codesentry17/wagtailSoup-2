@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags %}
+
+<!-- Fact Start -->
+<div class="container-fluid bg-secondary py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for fact in block.facts %}
+            <div class="col-lg-3 wow fadeIn" data-wow-delay="0.{{forloop.counter0}}s">
+                <div class="d-flex counter">
+                    <h1 class="me-3 text-primary counter-value">{{fact.number}}</h1>
+                    <h5 class="text-white mt-1">{{fact.fact}}</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Fact End -->
