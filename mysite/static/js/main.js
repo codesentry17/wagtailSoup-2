@@ -90,20 +90,47 @@
      // Fact Counter
 
      $(document).ready(function(){
-        $('.counter-value').each(function(){
-            $(this).prop('Counter',0).animate({
-                Counter: $(this).text()
-            },{
-                duration: 2000,
-                easing: 'easeInQuad',
-                step: function (now){
-                    $(this).text(Math.ceil(now));
+        // Function to check if an element is in the viewport
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to handle the animation
+        function animateCounterWhenVisible() {
+            $('.counter-value').each(function(){
+                if (isInViewport(this)) {
+                    var $this = $(this);
+                    if (!$this.hasClass('animated')) {
+                        $this.addClass('animated').prop('Counter',0).animate({
+                            Counter: $this.text()
+                        },{
+                            duration: 2000,
+                            easing: 'easeInQuad',
+                            step: function (now){
+                                $this.text(Math.ceil(now));
+                            }
+                        });
+                    }
                 }
             });
+        } 
+
+        // Trigger the animation when the page is scrolled
+        $(window).on('scroll', function() {
+            animateCounterWhenVisible();
         });
+
+        // Trigger the animation when the page is loaded (in case the element is already in the viewport)
+        animateCounterWhenVisible();
     });
 
 
 
-})(jQuery);
+    })(jQuery);
 
