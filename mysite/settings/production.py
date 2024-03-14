@@ -1,5 +1,12 @@
+from __future__ import absolute_import, unicode_literals
+
 from .base import *
 import dj_database_url
+
+import os
+
+env = os.environ.copy()
+SECRET_KEY = env['SECRET_KEY']
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
@@ -11,7 +18,7 @@ DEBUG = False
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = [
