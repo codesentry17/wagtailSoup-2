@@ -1,9 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="font-size:smaller; position: sticky; top: 100px;">
-    {% if page.advertisement_header %}
-    <h4 class="mb-4">{{page.advertisement_header}}</h4>
-    {% endif %}
+
     <div class="carousel-inner" role="listbox">
         {% for ad in ads %}
         <div class="carousel-item no-background {% if forloop.first %}active{% endif %}">

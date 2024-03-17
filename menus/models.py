@@ -14,7 +14,7 @@ from modelcluster.models import ClusterableModel
 
 
 class PageList(Orderable):
-    """table to hold navbar tab page dropdown"""
+    """The smallest entity; could be a site page or an external resource"""
     
     nav_tab = ParentalKey('NavTab', related_name='page_list')
     
@@ -26,16 +26,20 @@ class PageList(Orderable):
         on_delete=models.CASCADE,
     )
 
-    external_resource = models.URLField(blank=True, null=True, help_text="URL, don't forget to include 'Nav Title'")
+    resource_label = models.CharField(max_length=15, default="---", help_text="Link Short Name")
+    external_resource = models.URLField(blank=True, null=True, help_text="URL")
 
     panels = [
         PageChooserPanel('page_link'),
-        FieldPanel('external_resource')
+        FieldRowPanel([
+            FieldPanel('resource_label'),
+            FieldPanel('external_resource'),
+        ],heading='OR external link'),
     ]
 
 
 class NavTab(ClusterableModel, Orderable):
-    """the navbar tabs"""
+    """the navbar tabs that make the navbar band"""
 
     navbar = ParentalKey('Navbar', related_name='nav_tab')
 
@@ -97,5 +101,9 @@ class Navbar(ClusterableModel, TranslatableMixin):
         unique_together = ('translation_key', 'locale')
 
     def __str__(self) -> str:
-        return self.name1+' '+self.name2+' Navbar'
+        return 'Navbar'
     
+
+
+
+

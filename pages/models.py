@@ -90,7 +90,6 @@ class Blog(Page):
     blog_list_header = models.CharField(max_length=20, blank=True, null=True, default="Other Blogs")
 
     show_advertisement = models.BooleanField(default=True, blank=True)
-    advertisement_header = models.CharField(max_length=20, blank=True, null=True, default="Advertisement")
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -110,7 +109,6 @@ class Blog(Page):
             [
                 FieldPanel("blog_list_header"),
                 FieldPanel('show_advertisement'),
-                FieldPanel("advertisement_header")
             ],
             heading="Right Section"
         )
