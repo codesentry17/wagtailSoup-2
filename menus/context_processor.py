@@ -10,7 +10,7 @@ def get_nav_tab(request):
         return {  }
 
     return {
-        'WebName1':navbar.name1,
+        'WebName1':"Heart",
         'WebName2':navbar.name2,
         'WebNameOnClick':navbar.redirect,
         'tabs':navbar.nav_tab.all()
