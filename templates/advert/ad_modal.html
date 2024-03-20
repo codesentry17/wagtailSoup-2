@@ -4,8 +4,7 @@
 
 {% for ad in ads %}
 
-<div class="modal fade" id="exampleModal{{ad.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal{{ad.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content rounded-0">
             <div class="modal-body py-0">
@@ -63,4 +62,56 @@
 </div>
 </div>
 
+
+
 {% endfor %}
+
+
+<!-- Can try the below modal class -->
+<!-- 
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">  <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 ml-3">
+                        <div id="adCarousel" class="carousel slide" data-bs-ride="carousel"  style="margin-left: 10px;">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{% static 'img\carousel-2.jpg' %}" class="d-block w-100" alt="Image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{% static 'img\carousel-2.jpg' %}" class="d-block w-100" alt="Image 2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <h4 class="ad-title">Title of Advertisement</h4>
+                        <p class="ad-description">
+                            This is a short description of the advertised product or service.
+                            Highlight key features and benefits to grab the user's attention.
+                        </p>
+                        <ul class="ad-details" style="line-height: 2em; list-style-type: none;">
+                            <li>
+                                <i class="fas fa-calendar icon"></i><span class="detail-value">Monday - Friday</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock time-icon"></i><span class="detail-value">9:00 AM - 5:00 PM</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe"></i><a href="mailto:{{ad.email}}">www.example.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i><a href="tel:{{ad.phone}}"></a><span>(123) 456-7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i><a href="mailto:info@example.com" class="detail-value">info@example.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->

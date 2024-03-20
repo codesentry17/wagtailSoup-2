@@ -24,7 +24,7 @@
             <!-- This is where the blog content goes paras and images that i need to richtext iterate -->
 
             {% for component in page.component %}
-            <div class="mb-5 blog_body">
+            <div class="mb-5 blog_body" style="clear: both;">
 
                 {% if component.block.name == 'section' %}
                 {% with thing=component.value %}
@@ -34,9 +34,9 @@
                 {% if thing.image_position == "L" %}
                     {% image thing.image fill-500x500 class="img-thumbnail p-3 w-50 float-left mr-4 mb-3" alt="thing.image.title" %}
                 {% elif thing.image_position == 'R' %}
-                    {% image thing.image fill-500x500 class="img-thumbnail p-3 w-50 float-right ml-4 mb-3" alt="thing.image.title" %}
+                    {% image thing.image max-700x700 class="img-thumbnail p-3 w-50 float-right ml-4 mb-3" alt="thing.image.title" %}
                 {% else %}
-                    {% image thing.image fill-700x500 class="img-thumbnail mb-4 p-3" alt="page.card_image.title" %}
+                    {% image thing.image max-700x500 class="img-thumbnail mb-4 p-3" alt="page.card_image.title" %}
                 {% endif %}
 
                 {{thing.body|richtext}}
