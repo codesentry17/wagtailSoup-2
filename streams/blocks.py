@@ -7,6 +7,7 @@ class BannerCarouselSlide(blocks.StructBlock):
     slide_header = blocks.CharBlock()
     slide_subheader = blocks.CharBlock()
     slide_image = ImageChooserBlock()
+    slide_redirect_link = PageChooserBlock(required=False)
 
     def __str__(self):
         return self.slide_header

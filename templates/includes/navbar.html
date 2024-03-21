@@ -39,7 +39,7 @@
                         <a href="#" class="nav-link dropdown-toggle {% if request.path in tab.routes %}active{% endif %}" data-bs-toggle="dropdown">{{tab.nav_title}}</a>
                         <div class="dropdown-menu rounded">
                             {% for page in tab.page_list.all %}
-                            <a href="{% if page.page_link %}{{page.page_link.url}}{% else %}{{page.external_resource}}{% endif %}" class="dropdown-item {% if request.path == page.page_link.url %}active{% endif %}">{{page.page_link.title}}</a>
+                            <a {% if page.external_resource %}target="_blank"{% endif %} href="{% if page.page_link %}{{page.page_link.url}}{% else %}{{page.external_resource}}{% endif %}" class="dropdown-item {% if request.path == page.page_link.url %}active{% endif %}">{% if page.page_link %}{{page.page_link.title}}{% else %}{{page.resource_label}}{% endif %}</a>
                             {% endfor %}
                         </div>
                     </div>

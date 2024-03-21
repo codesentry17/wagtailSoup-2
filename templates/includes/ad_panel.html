@@ -1,13 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="font-size:smaller; position: sticky; top: 100px;">
-    {% if page.advertisement_header %}
-    <h4 class="mb-4">{{page.advertisement_header}}</h4>
-    {% endif %}
+
     <div class="carousel-inner" role="listbox">
         {% for ad in ads %}
         <div class="carousel-item no-background {% if forloop.first %}active{% endif %}">
-            <a data-bs-toggle="modal" href="#exampleModal{{ad.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a data-bs-toggle="modal" href="#exampleModal{{ad.id}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: black;">
                 <div class="blog-item">
                     {% image ad.photo max-500x500 class="img-fluid w-100 rounded-top" alt="{{ad.photo.title}}" %}
                     <div class="rounded-bottom bg-light">
@@ -19,8 +17,8 @@
                                 -webkit-box-orient: vertical;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
-                                -webkit-line-clamp: 3;
-                                color: #787878;">{{ad.description}}
+                                -webkit-line-clamp: 3;"
+                                >{{ad.description}}
                             </p>
                         </div>
                         <div class="p-4 py-2 d-flex justify-content-between bg-primary rounded-bottom blog-btn"></div>
