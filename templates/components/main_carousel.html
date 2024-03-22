@@ -10,7 +10,7 @@
         <div class="carousel-inner" role="listbox">
             {% for slide in block.slides %}
             <div class="carousel-item home {% if forloop.first %}active{% endif %}">
-                {% image slide.slide_image fill-1700x800 class="img-fluid" style="width:100%;" %}
+                {% image slide.slide_image fill-1700x800 class="img-fluid" style="width:100%; height:600px" %}
                 <div class="carousel-caption">
                     <div class="container carousel-content">
                         <h6 class="text-secondary h4 animated fadeInUp">{{page.title}}</h6>
