@@ -38,3 +38,7 @@ coverage/
 style2.css
 
 .env
+
+/static/
+
+!/mysite/static/

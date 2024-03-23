@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     "wagtail_localize",
     "wagtail_localize.locales",
 
-    "wagtail.contrib.settings",
     "wagtail.contrib.forms",
+    "wagtail.contrib.settings",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
     "wagtail.sites",
@@ -194,7 +194,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "Project"
+WAGTAIL_SITE_NAME = "mysite"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
