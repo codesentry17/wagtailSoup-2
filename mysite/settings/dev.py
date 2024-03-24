@@ -18,4 +18,4 @@ except ImportError:
     pass
 
 
-print("DEBUG =",DEBUG)
+print("dev file; DEBUG =",DEBUG)
