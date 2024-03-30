@@ -64,8 +64,6 @@ INSTALLED_APPS = [
 
     "django_recaptcha",
     "wagtailcaptcha",
-
-    "debug_toolbar",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -216,5 +214,3 @@ RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_SITE_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET_KEY')
 NOCAPTCHA = True
 
-
-INTERNAL_IPS = [ "127.0.0.1", "192.168.1.6", "*"]
