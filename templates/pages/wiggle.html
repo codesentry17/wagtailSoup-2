@@ -10,7 +10,7 @@
 
 {% for component in page.components %}
 
-{% if component.block.name == 'banner_carousel' %}
+{% if component.block_type == 'banner_carousel' %}
 
 {% include 'components/main_carousel.html' with block=component.value %}
 

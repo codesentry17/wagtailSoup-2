@@ -1,4 +1,4 @@
-# Create your models here.
+ # Create your models here.
 from django.db import models
 # Create your models here.
 
@@ -12,12 +12,11 @@ from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
 
-
 class PageList(Orderable):
     """The smallest entity; could be a site page or an external resource"""
-    
+
     nav_tab = ParentalKey('NavTab', related_name='page_list')
-    
+
     page_link = models.ForeignKey(
         'wagtailcore.Page',
         blank=True,
@@ -26,15 +25,22 @@ class PageList(Orderable):
         on_delete=models.CASCADE,
     )
 
-    resource_label = models.CharField(max_length=15, default="---", help_text="Link Short Name")
+    resource_label = models.CharField(max_length=15, default="external", help_text="Link Short Name")
     external_resource = models.URLField(blank=True, null=True, help_text="URL")
 
     panels = [
-        PageChooserPanel('page_link'),
-        FieldRowPanel([
-            FieldPanel('resource_label'),
-            FieldPanel('external_resource'),
-        ],heading='OR external link'),
+        FieldRowPanel(
+            [
+                PageChooserPanel("page_link"),
+                MultiFieldPanel(
+                    [
+                        FieldPanel("resource_label"),
+                        FieldPanel("external_resource"),
+                    ],
+                    heading="Or External Link",
+                )
+            ]
+        )
     ]
 
 
@@ -43,11 +49,11 @@ class NavTab(ClusterableModel, Orderable):
 
     navbar = ParentalKey('Navbar', related_name='nav_tab')
 
-    nav_title = models.CharField(max_length=20, blank=True, null=True)
+    nav_title = models.CharField(max_length=20, blank=True, null=True, help_text="Ignore if single page / external link")
 
     panels = [
         FieldPanel('nav_title'),
-        InlinePanel('page_list', label='Your Page/s')
+        InlinePanel('page_list', label='Your Page')
     ]
 
     @property
@@ -61,14 +67,19 @@ class NavTab(ClusterableModel, Orderable):
 
     def save(self, **kwargs):
         if not self.nav_title:
-            try:
-                self.nav_title = self.page_list.first().page_link.title
-            except:
-                self.nav_title = "Unlabelled"
+            redirect = self.page_list.first()
+
+            if redirect.page_link:
+                """first link is a wagtail page"""
+                self.nav_title = redirect.page_link.title
+            else:
+                """first link is an external page"""
+                self.nav_title = redirect.resource_label
+
         super(NavTab,self).save(**kwargs)
 
     def __str__(self) -> str:
-        return "NavTab"
+        return self.nav_title
 
 
 @register_snippet
@@ -94,7 +105,7 @@ class Navbar(ClusterableModel, TranslatableMixin):
             ],
             heading="WebSite Name",
         ),
-        InlinePanel('nav_tab', label='Nav Item/s')
+        InlinePanel('nav_tab', label='Nav Item')
     ]
 
     class Meta:
@@ -102,8 +113,3 @@ class Navbar(ClusterableModel, TranslatableMixin):
 
     def __str__(self) -> str:
         return 'Navbar'
-    
-
-
-
-

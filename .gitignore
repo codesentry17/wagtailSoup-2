@@ -42,3 +42,5 @@ style2.css
 /static/
 
 !/mysite/static/
+
+django_error.log

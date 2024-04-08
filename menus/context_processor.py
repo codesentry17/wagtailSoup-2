@@ -7,7 +7,7 @@ def get_nav_tab(request):
     
     if navbar is not None:
         return {
-            'WebName1':"" if navbar.name1 is None else navbar.name1,
+            'WebName1':navbar.name1,
             'WebName2':navbar.name2,
             'WebNameOnClick':navbar.redirect,
             'tabs':navbar.nav_tab.all()
